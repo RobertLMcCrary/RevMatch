@@ -1,0 +1,29 @@
+
+
+### register
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "firstname": "Robert",
+    "lastname": "McCrary",
+    "username": "Robert McCrary",
+    "email": "rlmccrary1210@gmail.com",
+    "password": "scottlee23"
+}
+
+### login
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "rlmccrary1210@gmail.com",
+    "password": "scottlee23"
+}
+
+
+
+### Test Root Endpoint
+
+GET http://localhost:5000/
+Content-Type: application/json
