@@ -94,8 +94,13 @@ const loginUser = async (req, res) => {
     }
 }
 
+const getUserData = (req, res) => {
+
+}
+
 module.exports = {
     test,
     registerUser,
-    loginUser
+    loginUser,
+    getUserData
 }
