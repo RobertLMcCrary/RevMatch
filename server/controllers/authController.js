@@ -41,7 +41,7 @@ const registerUser = async (req, res) => {
             lastname,
             username,
             email,
-            password: hashedPassword
+            password: hashedPassword, 
         })
 
         return res.json(user)
@@ -73,7 +73,7 @@ const loginUser = async (req, res) => {
                 id: user._id,
                 username: user.username,
                 firstname: user.firstname,
-                lastname: user.lastname
+                lastname: user.lastname,
             },
                 process.env.JWT_SECRET, {}, (err, token) => {
                     if (err) {
@@ -94,13 +94,8 @@ const loginUser = async (req, res) => {
     }
 }
 
-const getUserData = (req, res) => {
-
-}
-
 module.exports = {
     test,
     registerUser,
     loginUser,
-    getUserData
 }

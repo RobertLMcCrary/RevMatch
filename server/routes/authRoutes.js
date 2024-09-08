@@ -9,10 +9,9 @@ router.use(cors({
     origin: 'http://localhost:3000'
 }))
 
-//test route (test function is defined in our authController.js)
+//routes, functions from authController.js
 router.get('/', test)
 router.post('/register', registerUser)
 router.post('/login', loginUser)
-router.get('/profile', getUserData)
 
 module.exports = router
