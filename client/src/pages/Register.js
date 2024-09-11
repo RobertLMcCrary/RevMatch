@@ -22,7 +22,7 @@ function Register() {
         const { firstname, lastname, username, email, password } = data
 
         try {
-            const {data} = await axios.post('http://localhost:5000/register', {
+            const {data} = await axios.post('http://localhost:5001/register', {
                 firstname, lastname, username, email, password
             })
 
