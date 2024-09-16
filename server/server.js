@@ -15,8 +15,9 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
 
-//connecting from authRoutes.js
+//connecting from routes
 app.use('/', require('./routes/authRoutes'))
+app.use('/user', require('./routes/userRoutes'))
 
 
 const PORT = process.env.PORT || 5001
