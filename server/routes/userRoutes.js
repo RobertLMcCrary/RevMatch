@@ -11,7 +11,7 @@ router.use(cors({
 
 
 //routes, functions from userController.js
-router.get('/profile', getUserProfile)
+router.get('/profile/:id', getUserProfile)
 router.get('/posts/:id', getPostById)
 router.get('/user/:id/posts', getUserPosts)
 router.post('/posts', createPost)

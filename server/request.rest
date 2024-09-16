@@ -1,7 +1,7 @@
 
 
 ### register
-POST http://localhost:5000/register
+POST http://localhost:5001/register
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### login
-POST http://localhost:5000/login
+POST http://localhost:5001/login
 Content-Type: application/json
 
 {
@@ -22,8 +22,7 @@ Content-Type: application/json
 }
 
 
-
-### Test Root Endpoint
-
-GET http://localhost:5000/
+### Get User Profile
+GET http://localhost:5001/profile/66e87e48fd38c834dbe698b9
 Content-Type: application/json
+

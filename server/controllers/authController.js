@@ -41,7 +41,7 @@ const registerUser = async (req, res) => {
             lastname,
             username,
             email,
-            password: hashedPassword, 
+            password: hashedPassword,
         })
 
         return res.json(user)
@@ -51,7 +51,6 @@ const registerUser = async (req, res) => {
     }
 }
 
-//login endpoint
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body
@@ -66,28 +65,30 @@ const loginUser = async (req, res) => {
 
         //check password
         const match = await comparePassword(password, user.password)
-        if (match) {
-            //if password matches then use JWT
-            jwt.sign({
-                email: user.email,
-                id: user._id,
-                username: user.username,
-                firstname: user.firstname,
-                lastname: user.lastname,
-            },
-                process.env.JWT_SECRET, {}, (err, token) => {
-                    if (err) {
-                        throw err
-                    }
 
-                    res.cookie('token', token).json(user)
-                })
-        }
         if (!match) {
             res.json({
                 error: "Passwords do not match"
             })
+
+            return res.status(400).json({ error: "Invalid credentials" })
         }
+
+        const token = jwt.sign({
+            email: user.email,
+            id: user._id,
+            username: user.username,
+            firstname: user.firstname,
+            lastname: user.lastname,
+        }, process.env.JWT_SECRET, {}, (err, token) => {
+                if (err) {
+                    throw err
+                }
+            })
+
+        res.cookie('token', token, { httpOnly: true })
+        res.json({ message: 'Logged in successfully' })
+
     }
     catch (error) {
         console.log(error)
