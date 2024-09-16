@@ -23,6 +23,6 @@ Content-Type: application/json
 
 
 ### Get User Profile
-GET http://localhost:5001/profile/66e87e48fd38c834dbe698b9
+GET http://localhost:5001/profile
 Content-Type: application/json
 

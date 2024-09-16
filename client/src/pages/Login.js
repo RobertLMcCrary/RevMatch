@@ -39,8 +39,7 @@ function Login() {
 
 
     return (
-        <div className='page-wrapper'>
-            <h1>Login</h1>
+        <div className='form-page-wrapper'>
 
             <form onSubmit={loginUser}>
                 <label>Email</label>

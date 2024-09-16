@@ -42,7 +42,7 @@ function Register() {
 
 
     return (
-        <div className='page-wrapper'>
+        <div className='form-page-wrapper'>
             <h1>Register</h1>
 
             <form onSubmit={registerUser}>
