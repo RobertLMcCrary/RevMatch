@@ -2,7 +2,6 @@ const User = require('../models/User')
 const { hashPassword, comparePassword } = require('../helpers/auth')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv').config()
-const jwtSecret = process.env.JWT_SECRET || '1234125365'
 
 //login endpoint
 const test = (req, res) => {
@@ -55,7 +54,7 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     try {
-        const { email, password } = req.body
+        const { firstname, lastname, username, email, password } = req.body
 
         //check if users exists from email
         const user = await User.findOne({ email });
@@ -68,27 +67,33 @@ const loginUser = async (req, res) => {
         //check password
         const match = await comparePassword(password, user.password)
 
-        if (!match) {
-            res.json({
-                error: "Passwords do not match"
+        if (match) {
+            jwt.sign({
+                email: user.email,
+                id: user._id,
+                username: user.username,
+                firstname: user.firstname,
+                lastname: user.lastname,
+            }, process.env.JWT_SECRET, {}, (err, token) => {
+                if (err) {
+                    throw err
+                }
+                //res.cookie('token', token)
+                res.cookie('token', token, {
+                    httpOnly: true,  // Only accessible by the server
+                    secure: process.env.NODE_ENV === 'production', // Only set for HTTPS in production
+                    sameSite: 'lax',  // Helps protect against CSRF
+                    domain: 'localhost',
+                    path: '/',
+                    expires: new Date(Date.now() + 8 * 3600000)
+                }).json({ message: "Logged in successfully!" });
             })
-
-            return res.status(400).json({ error: "Invalid credentials" })
         }
-
-        const token = jwt.sign({
-            email: user.email,
-            id: user._id,
-            username: user.username,
-            firstname: user.firstname,
-            lastname: user.lastname,
-        }, jwtSecret)
-
-        if (!token) {
-            return res.status(400).json({ error: "error generating token" })
+        else {
+            return res.json({
+                error: "Invalid Password"
+            })
         }
-
-        res.cookie('token', token).json({ message: "Logged in successfully!" })
 
     }
     catch (error) {
@@ -101,7 +106,7 @@ const getProfile = (req, res) => {
     const token = req.cookies.token
 
     if (token) {
-        jwt.verify(token, jwtSecret, {}, (err, user) => {
+        jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
             if (err) {
                 return res.status(401).json({ error: "Invalid token" })
             }
@@ -109,7 +114,7 @@ const getProfile = (req, res) => {
         })
     }
     else {
-        res.json(null)
+        res.json({error: "No token provided"})
     }
 }
 

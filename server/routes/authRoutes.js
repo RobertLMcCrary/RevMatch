@@ -6,7 +6,7 @@ const { test, registerUser, loginUser, getProfile } = require('../controllers/au
 //middleware
 router.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:5173'
 }))
 
 //routes, functions from authController.js
