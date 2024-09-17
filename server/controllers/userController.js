@@ -3,7 +3,7 @@ const Post = require('../models/Post')
 const jwt = require('jsonwebtoken')
 
 const getUserProfile = async (req, res) => {
-    res.json({ message: 'user controller function called successfully '})
+    res.json({ message: 'user controller function called successfully' })
 }
 
 const getPostById = async (req, res) => {

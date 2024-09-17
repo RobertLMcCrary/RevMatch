@@ -111,9 +111,13 @@ a:hover {
     background-position: center;
 }
 
+.form-header {
+    text-align: center;
+}
+
 form {
-    background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(50px);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

@@ -28,7 +28,7 @@ function Login() {
             }
             else {
                 setData({})
-                toast.success('Welcome to RevMatch!')
+                toast.success('Loggin Successful!')
                 navigate('/dashboard')
             }
         }
@@ -42,6 +42,7 @@ function Login() {
         <div className='form-page-wrapper'>
 
             <form onSubmit={loginUser}>
+
                 <label>Email</label>
                 <input type='email' value={data.email} onChange={(e) => setData({...data, email: e.target.value})} />
 

@@ -1,6 +1,8 @@
 const User = require('../models/User')
 const { hashPassword, comparePassword } = require('../helpers/auth')
 const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv').config()
+const jwtSecret = process.env.JWT_SECRET || '1234125365'
 
 //login endpoint
 const test = (req, res) => {
@@ -80,14 +82,13 @@ const loginUser = async (req, res) => {
             username: user.username,
             firstname: user.firstname,
             lastname: user.lastname,
-        }, process.env.JWT_SECRET, {}, (err, token) => {
-                if (err) {
-                    throw err
-                }
-            })
+        }, jwtSecret)
 
-        res.cookie('token', token, { httpOnly: true })
-        res.json({ message: 'Logged in successfully' })
+        if (!token) {
+            return res.status(400).json({ error: "error generating token" })
+        }
+
+        res.cookie('token', token).json({ message: "Logged in successfully!" })
 
     }
     catch (error) {
@@ -95,8 +96,26 @@ const loginUser = async (req, res) => {
     }
 }
 
+const getProfile = (req, res) => {
+
+    const token = req.cookies.token
+
+    if (token) {
+        jwt.verify(token, jwtSecret, {}, (err, user) => {
+            if (err) {
+                return res.status(401).json({ error: "Invalid token" })
+            }
+            res.json(user)
+        })
+    }
+    else {
+        res.json(null)
+    }
+}
+
 module.exports = {
     test,
     registerUser,
     loginUser,
+    getProfile
 }

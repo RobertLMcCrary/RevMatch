@@ -5,10 +5,11 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import { Toaster } from 'react-hot-toast'
+import { UserContextProvider } from './context/userContext';
 
 function App() {
     return (
-        <>
+        <UserContextProvider>
             <Toaster position='bottom-right' toastOptions={{ duration: 2000 }} />
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -16,7 +17,7 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/dashboard' element={<Dashboard />} />
             </Routes>
-        </>
+        </UserContextProvider>
     );
 }
 
