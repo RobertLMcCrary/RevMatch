@@ -1,4 +1,6 @@
-
+### test endpoint from authController.js
+GET http://localhost:5001/
+Content-Type: application/json
 
 ### register
 POST http://localhost:5001/register

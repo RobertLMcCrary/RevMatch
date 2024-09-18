@@ -10,7 +10,7 @@ function Dashboard() {
     return (
         <div>
             <h1>RevMatch Dashboard</h1>
-            {!!user && (<h1>Welcome {user.email}</h1>)}
+            {!!user && <h1>Welcome {user.email}</h1>}
         </div>
     )
 }

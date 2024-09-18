@@ -9,7 +9,7 @@ export function UserContextProvider({ children }) {
     useEffect(() => {
         const fetchUserProfile = () => {
             try {
-                const { data } = axios.get('http://localhost:5001/profile', { withCredentials: true });
+                const { data } = axios.get('http://localhost:5001/profile');
                 setUser(data);
             } catch (error) {
                 console.error('Error fetching profile:', error);
