@@ -70,6 +70,7 @@ const loginUser = async (req, res) => {
         if (match) {
             jwt.sign({
                 email: user.email,
+                password: user.password,
                 id: user._id,
                 username: user.username,
                 firstname: user.firstname,
@@ -103,6 +104,7 @@ const loginUser = async (req, res) => {
 
 const getProfile = (req, res) => {
 
+    console.log('Cookies: ', req.cookies.token)
     const token = req.cookies.token
 
     if (token) {

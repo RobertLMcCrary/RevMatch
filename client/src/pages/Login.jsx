@@ -22,7 +22,7 @@ function Login() {
             const {data} = await axios.post('http://localhost:5001/login', {
                 email,
                 password
-            })
+            }, { withCredentials: true })
             if(data.error) {
                 toast.error(data.error)
             }
