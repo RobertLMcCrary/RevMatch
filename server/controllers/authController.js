@@ -54,7 +54,18 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     try {
-        const { firstname, lastname, username, email, password } = req.body
+        const {
+            firstname, 
+            lastname, 
+            username, 
+            email, 
+            password, 
+            posts, 
+            followers, 
+            following,
+            bio,
+            profilePic
+        } = req.body
 
         //check if users exists from email
         const user = await User.findOne({ email });
@@ -75,6 +86,11 @@ const loginUser = async (req, res) => {
                 username: user.username,
                 firstname: user.firstname,
                 lastname: user.lastname,
+                posts: user.posts,
+                followers: user.followers,
+                following: user.following,
+                bio: user.bio,
+                profilePic: user.profilePic,
             }, process.env.JWT_SECRET, {}, (err, token) => {
                 if (err) {
                     throw err

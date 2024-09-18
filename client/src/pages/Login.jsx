@@ -49,7 +49,7 @@ function Login() {
                 <label>Password</label>
                 <input type='password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})} />
 
-                <button type='submit'>Login</button>
+                <button className='form-button' type='submit'>Login</button>
                 <Link to='/register'>Don't have an accout? Register</Link>
                 <Link to='/'>Back</Link>
             </form>

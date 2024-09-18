@@ -45,7 +45,19 @@ const userSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
-    ]
+    ],
+    bio: {
+        type: String,
+        required: false,
+        unique: false,
+        default: "User Bio"
+    },
+    profilePic: {
+        type: String,
+        required: false,
+        unique: false,
+        default: "profile pic url"
+    }
 })
 
 const UserModel = mongoose.model('User', userSchema)
