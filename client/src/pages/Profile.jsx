@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import AuthNavbar from "../components/AuthNavbar";
 
-//css in js
+// Styled components
 const ProfilePage = styled.div`
-    background-color: #fff;
+    background-color: #f4f4f4;
     color: #000;
     min-height: 100vh;
     display: flex;
@@ -16,10 +16,14 @@ const ProfilePage = styled.div`
 `;
 
 const ProfileContainer = styled.div`
+    background-color: #fff;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     padding: 20px;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 `;
 
 const ProfilePicContainer = styled.div`
@@ -49,9 +53,20 @@ const Bio = styled.p`
     margin: 10px 0;
 `;
 
-const Email = styled.p`
-    font-size: 16px;
-    color: #333;
+const EditButton = styled(Link)`
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #333;
+    }
 `;
 
 function Profile() {
@@ -64,10 +79,9 @@ function Profile() {
                 <ProfilePicContainer>
                     <ProfilePic src={user.profilePic} alt="profile" />
                 </ProfilePicContainer>
-                <Link to={'/editprofile'}>Edit</Link>
                 <Username>{user.username}</Username>
                 <Bio>{user.bio}</Bio>
-                <Email>{user.email}</Email>
+                <EditButton to="/editprofile">Edit Profile</EditButton>
             </ProfileContainer>
         </ProfilePage>
     );

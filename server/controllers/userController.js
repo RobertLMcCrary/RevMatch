@@ -2,7 +2,7 @@ const User = require('../models/User')
 const Post = require('../models/Post')
 const jwt = require('jsonwebtoken')
 
-const getUserProfile = async (req, res) => {
+const getUser = async (req, res) => {
     res.json({ message: 'user controller function called successfully' })
 }
 
@@ -28,10 +28,10 @@ const deletePost = async (req, res) => {
 
 
 module.exports = {
-    getUserProfile,
     getPostById,
     getUserPosts,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    getUser
 }

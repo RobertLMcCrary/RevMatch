@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/editprofile' element={<EditProfile />} />
       </Routes>
+      <Footer />
     </UserContextProvider>
   );
 }

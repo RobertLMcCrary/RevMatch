@@ -26,3 +26,15 @@ Content-Type: application/json
 
 ### Get User Profile
 GET http://localhost:5001/profile
+
+
+### Update Profile
+PUT http://localhost:5001/edit
+Content-Type: application/json
+
+{
+    "firstname": "Robert",
+    "lastname": "McCrary",
+    "bio": "Updated bio",
+    "profilePic": "profile picture link"
+}

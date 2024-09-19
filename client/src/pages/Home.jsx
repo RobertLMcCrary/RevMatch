@@ -25,7 +25,6 @@ function Home() {
                 </div>
                 <img data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000" src="./HomePageGT3.png" />
             </div>
-            <Footer />
         </div>
     )
 }
