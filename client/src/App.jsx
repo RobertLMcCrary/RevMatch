@@ -1,11 +1,16 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast'
+import { UserContextProvider } from '../context/userContext';
+
+//pages for the routes
+import EditProfile from './pages/EditProfile';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
-import { Toaster } from 'react-hot-toast'
-import { UserContextProvider } from '../context/userContext';
+import Profile from './pages/Profile';
+
 
 function App() {
   return (
@@ -16,6 +21,8 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/editprofile' element={<EditProfile />} />
       </Routes>
     </UserContextProvider>
   );

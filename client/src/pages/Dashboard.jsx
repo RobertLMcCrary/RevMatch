@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useContext, useSyncExternalStore } from 'react'
+import React, { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import { UserContext } from '../../context/userContext';
-import './pages.css'
+import AuthNavbar from '../components/AuthNavbar';
+import styled from 'styled-components';
 
 function Dashboard() {
 
@@ -10,8 +12,7 @@ function Dashboard() {
 
     return (
             <div>
-                <h1>RevMatch Dashboard</h1>
-                {!!user && <h1>Welcome {user.firstname}</h1>}
+                <AuthNavbar />
             </div>
     )
 }
