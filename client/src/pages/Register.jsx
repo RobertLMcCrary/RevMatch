@@ -2,42 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './pages.css'
-import { toast } from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom';
 
 function Register() {
-    const navigate = useNavigate()
-
-    const [data, setData] = useState({
-        firstname: '',
-        lastname: '',
-        username: '',
-        email: '',
-        password: '',
-    })
-
-    const registerUser = async (e) => {
-        e.preventDefault()
-
-        const { firstname, lastname, username, email, password } = data
-
-        try {
-            const { data } = await axios.post('http://localhost:5001/register', {
-                firstname, lastname, username, email, password
-            })
-
-            if (data.error) {
-                toast.error(data.error)
-            }
-            else {
-                setData({})
-                toast.success('Registration Successful')
-                navigate('/login')
-            }
-        }
-        catch (error) {
-            console.log(error)
-        }
+    
+    const registerUser = () => {
+        //function to register user
     }
 
 
@@ -47,19 +16,19 @@ function Register() {
             <form onSubmit={registerUser}>
 
                 <label>First Name</label>
-                <input type='text' value={data.firstname} onChange={(e) => setData({ ...data, firstname: e.target.value })} />
+                <input type='text'  />
 
                 <label>Last Name</label>
-                <input type='text' value={data.lastname} onChange={(e) => setData({ ...data, lastname: e.target.value })} />
+                <input type='text' />
 
                 <label>Username</label>
-                <input type='text' value={data.username} onChange={(e) => setData({ ...data, username: e.target.value })} />
+                <input type='text' />
 
                 <label>Email</label>
-                <input type='email' value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} />
+                <input type='email' />
 
                 <label>Password</label>
-                <input type='password' value={data.password} onChange={(e) => setData({ ...data, password: e.target.value })} />
+                <input type='password' />
 
                 <button className='form-button' type='submit'>Sign Up</button>
                 <Link to='/login'>Already have an accout? Login</Link>

@@ -6,37 +6,10 @@ import {toast} from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-    const navigate = useNavigate()
 
-    const [data, setData] = useState({
-        email: '',
-        password: '',
-    })
-
-    const loginUser = async (e) => {
-        e.preventDefault()
-
-        const {email, password} = data
-        
-        try {
-            const {data} = await axios.post('http://localhost:5001/login', {
-                email,
-                password
-            }, { withCredentials: true })
-            if(data.error) {
-                toast.error(data.error)
-            }
-            else {
-                setData({})
-                toast.success('Loggin Successful!')
-                navigate('/dashboard')
-            }
-        }
-        catch(error) {
-            console.log(error)
-        }
+    const loginUser = () => {
+        //function to login user
     }
-
 
     return (
         <div className='form-page-wrapper'>
@@ -44,10 +17,10 @@ function Login() {
             <form onSubmit={loginUser}>
 
                 <label>Email</label>
-                <input type='email' value={data.email} onChange={(e) => setData({...data, email: e.target.value})} />
+                <input type='email' />
 
                 <label>Password</label>
-                <input type='password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})} />
+                <input type='password' />
 
                 <button className='form-button' type='submit'>Login</button>
                 <Link to='/register'>Don't have an accout? Register</Link>
