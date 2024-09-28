@@ -1,5 +1,4 @@
 import React from 'react';
-import AuthNavbar from '../components/AuthNavbar';
 import styled from 'styled-components';
 
 // Styled components
